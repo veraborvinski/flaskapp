@@ -6,4 +6,4 @@ COPY *.py /home/
 COPY templates/*.* /home/templates/
 ENTRYPOINT ["python"]
 CMD ["/home/catalogue.py" ]
-EXPOSE 8080
+EXPOSE 5000
