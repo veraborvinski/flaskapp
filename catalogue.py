@@ -10,7 +10,6 @@ from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash
 app = Flask(__name__)
 app.debug = True
-"""
 @app.route('/Video/<video>')
 def video_page(video):
     print (video)
@@ -39,11 +38,8 @@ def video_page(video):
                   if (key2=="pic"):
                       pic=index[key][key2]
     return render_template('video.html', name=video,file=videofile,pic=pic)
-"""
+
 @app.route('/')
-def hello_world():
-     return 'Hello World!'
-"""
 def cat_page():
     url = "http://34.142.25.93/myflix/videos"
     headers = {}
@@ -83,7 +79,6 @@ def cat_page():
               print("=======================")
 
     return html
-"""
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port="8080")
