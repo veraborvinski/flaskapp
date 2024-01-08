@@ -41,8 +41,8 @@ def video_page(video):
     return render_template('video.html', name=video,file=videofile,pic=pic)
 """
 @app.route('/')
-     def hello_world():
-    return 'Hello World!'
+def hello_world():
+     return 'Hello World!'
 """
 def cat_page():
     url = "http://34.142.25.93/myflix/videos"
