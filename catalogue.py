@@ -12,20 +12,22 @@ app = Flask(__name__)
 app.debug = True
 @app.route('/Video/<video>')
 def video_page(video):
-    print (video)
-    url = 'http://34.142.25.93/myflix/videos?filter={"video.uuid":"'+video+'"}'
-    headers = {}
-    payload = json.dumps({ })
-    print (request.endpoint)
-    response = requests.get(url)
-    print (url)
-    if response.status_code != 200:
-      print("Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message']))
-      return "Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message'])
-    jResp = response.json()
-    print (type(jResp))
-    print (jResp)
-    for index in jResp:
+     print (video)
+     url = 'http://34.142.25.93/myflix/videos?filter={"video.uuid":"'+video+'"}'
+     headers = {}
+     payload = json.dumps({ })
+     print (request.endpoint)
+     response = requests.get(url)
+     print (url)
+     if response.status_code != 200:
+          print("Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message']))
+          return "Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message'])
+     jResp = response.json()
+     print (type(jResp))
+     print (jResp)
+     videofile = None
+     pic = None
+     for index in jResp:
         for key in index:
            if (key !="_id"):
               print (index[key])
@@ -37,7 +39,7 @@ def video_page(video):
                       videofile=index[key][key2]
                   if (key2=="pic"):
                       pic=index[key][key2]
-                  return render_template('video.html', name=video,file=videofile,pic=pic)
+     return render_template('video.html', name=video,file=videofile,pic=pic)
 
 @app.route('/')
 def cat_page():
