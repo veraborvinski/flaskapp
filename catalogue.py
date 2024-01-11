@@ -27,19 +27,22 @@ def video_page(video):
      print (jResp)
      videofile = None
      pic = None
+     ip = None
      for index in jResp:
         for key in index:
            if (key !="_id"):
               print (index[key])
               for key2 in index[key]:
-                  print (key2,index[key][key2])
-                  if (key2=="Name"):
-                      video=index[key][key2]
-                  if (key2=="file"):
-                      videofile=index[key][key2]
-                  if (key2=="pic"):
-                      pic=index[key][key2]
-     return render_template('video.html', name=video,file=videofile,pic=pic)
+                    print (key2,index[key][key2])
+                    if (key2=="Name"):
+                         video=index[key][key2]
+                    if (key2=="file"):
+                         videofile=index[key][key2]
+                    if (key2=="pic"):
+                         pic=index[key][key2]
+                    if (key2=="ip"):
+                         ip=index[key][key2]
+     return render_template('video.html', name=video,file=videofile,pic=pic,ip=ip)
 
 @app.route('/')
 def cat_page():
