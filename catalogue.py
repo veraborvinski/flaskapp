@@ -79,7 +79,7 @@ def cat_page():
                                              if (key2=="uuid"):
                                                   uuid=index[key][key2]
                                              if (key2=="category"):
-                                                  if (index[key][key2]==category)
+                                                  if (index[key][key2]==category):
                                                             html=html+'<h3>'+name+'</h3>'
                                                             html=html+'<a href="http://'+ServerIP+':8080/Video/'+uuid+'">'
                                                             html=html+'<img src="http://34.147.236.169/pics/'+thumb+'">'
