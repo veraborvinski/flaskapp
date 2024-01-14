@@ -59,9 +59,8 @@ def cat_page():
                return "Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message'])
           jResp = response.json()
           
-          categories = requests.get(url).json()
+          categories = requests.get("http://34.142.25.93/myflix/categories").json()
           for category_index in categories:
-               html=html+'<h2>'+str(category_index)+'</h2>'
                for key in category_index:
                     if (key=="category"):
                          html=html+'<h2>'+category_index[key]+'</h2>'
