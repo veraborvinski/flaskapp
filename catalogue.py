@@ -50,6 +50,7 @@ def cat_page():
           headers = {}
           payload = json.dumps({ })
           html="<h2>Your Videos -server 1</h2>"
+          ServerIP=request.host.split(':')[0]
           
           response = requests.get(url)
           print (response)
@@ -61,37 +62,33 @@ def cat_page():
           
           categories = requests.get("http://34.142.25.93/myflix/categories").json()
           for category_index in categories:
-               for key in category_index:
-                    if (key=="category"):
-                         html=html+'<h2>'+category_index[key]+'</h2>'
-          
-          print (type(jResp))
-          
-          name=None
-          thumb=None
-          uuid=None
-          for index in jResp:
-               print ("----------------")
-               for key in index:
-                    if (key !="_id"):
-                         print (index[key])
-                         for key2 in index[key]:
-                              print (key2,index[key][key2])
-                              if (key2=="Name"):
-                                   name=index[key][key2]
-                              if (key2=="thumb"):
-                                   thumb=index[key][key2]
-                              if (key2=="uuid"):
-                                   uuid=index[key][key2]  
-                         if name is not None:
-                              html=html+'<h3>'+name+'</h3>'
-                              
-                         if thumb is not None and uuid is not None:
-                              ServerIP=request.host.split(':')[0]
-                              html=html+'<a href="http://'+ServerIP+':8080/Video/'+uuid+'">'
-                              html=html+'<img src="http://34.147.236.169/pics/'+thumb+'">'
-                              html=html+"</a>"        
-                         print("=======================")
+               for category in category_index:
+                    if (category=="category"):
+                         html=html+'<h2>'+category_index["category"]+'</h2>'         
+                              name=None
+                              thumb=None
+                              uuid=None
+                              for index in jResp:
+                                   print ("----------------")
+                                   for key in index:
+                                        if (key !="_id"):
+                                             print (index[key])
+                                             for key2 in index[key]:
+                                                  print (key2,index[key][key2])
+                                                  if (key2=="Name"):
+                                                       name=index[key][key2]
+                                                  if (key2=="thumb"):
+                                                       thumb=index[key][key2]
+                                                  if (key2=="uuid"):
+                                                       uuid=index[key][key2]
+                                                  if (key2=="category"):
+                                                       if (index[key][key2]==category)
+                                                            if name is not None:
+                                                                 html=html+'<h3>'+name+'</h3>'
+                                                                 html=html+'<a href="http://'+ServerIP+':8080/Video/'+uuid+'">'
+                                                                 html=html+'<img src="http://34.147.236.169/pics/'+thumb+'">'
+                                                                 html=html+"</a>"        
+                                                            print("=======================")
      
           return html
      else:
