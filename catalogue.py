@@ -52,8 +52,8 @@ def cat_page():
           html="<h2>Your Videos</h2>"
           ServerIP=request.host.split(':')[0]
 
-          html=html+'<h3>'+Keep watching+'</h3>' 
-          html=html+'<h3>'+Recommended+'</h3>' 
+          html=html+'<h3>Keep watching</h3>' 
+          html=html+'<h3>Recommended</h3>' 
           
           response = requests.get(url)
           print (response)
