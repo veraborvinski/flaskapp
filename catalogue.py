@@ -49,7 +49,8 @@ def cat_page():
           url = "http://34.142.25.93/myflix/videos"
           headers = {}
           payload = json.dumps({ })
-     
+          html="<h2> Your Videos</h2>"
+          
           response = requests.get(url)
           print (response)
           print (response.status_code)
@@ -63,7 +64,7 @@ def cat_page():
                html=html+'<h2>'+category_index["category"]+'</h2>'
           
           print (type(jResp))
-          html="<h2> Your Videos</h2>"
+          
           name=None
           thumb=None
           uuid=None
