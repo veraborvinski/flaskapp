@@ -77,9 +77,9 @@ def cat_page():
                               uuid=index[key][key2]  
                     if name is not None:
                          html=html+'<h3>'+name+'</h3>'
-                    ServerIP=request.host.split(':')[0]
-
-                    if thumb is not None and uuid is not None::
+                         
+                    if thumb is not None and uuid is not None:
+                         ServerIP=request.host.split(':')[0]
                          html=html+'<a href="http://'+ServerIP+':8080/Video/'+uuid+'">'
                          html=html+'<img src="http://34.147.236.169/pics/'+thumb+'">'
                          html=html+"</a>"        
