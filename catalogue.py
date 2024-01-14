@@ -40,10 +40,6 @@ def video_page(video):
                          videofile=index[key][key2]
                     if (key2=="pic"):
                          pic=index[key][key2]
-                    """
-                    if (key2=="ip"):
-                         ip=index[key][key2]
-                    """
      return render_template('video.html', name=video,file=videofile,pic=pic)
 
 @app.route('/')
@@ -79,11 +75,14 @@ def cat_page():
                               thumb=index[key][key2]
                          if (key2=="uuid"):
                               uuid=index[key][key2]  
-                    html=html+'<h3>'+name+'</h3>'
+                    if name is not None:
+                         html=html+'<h3>'+name+'</h3>'
                     ServerIP=request.host.split(':')[0]
-                    html=html+'<a href="http://'+ServerIP+':8080/Video/'+uuid+'">'
-                    html=html+'<img src="http://34.147.236.169/pics/'+thumb+'">'
-                    html=html+"</a>"        
+
+                    if thumb is not None and uuid is not None::
+                         html=html+'<a href="http://'+ServerIP+':8080/Video/'+uuid+'">'
+                         html=html+'<img src="http://34.147.236.169/pics/'+thumb+'">'
+                         html=html+"</a>"        
                     print("=======================")
      
           return html
