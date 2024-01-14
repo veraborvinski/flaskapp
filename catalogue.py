@@ -49,7 +49,7 @@ def cat_page():
           url = "http://34.142.25.93/myflix/videos"
           headers = {}
           payload = json.dumps({ })
-          html="<h2> Your Videos</h2>"
+          html="<h2>Your Videos -server 1</h2>"
           
           response = requests.get(url)
           print (response)
