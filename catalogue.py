@@ -51,6 +51,9 @@ def cat_page():
           payload = json.dumps({ })
           html="<h2>Your Videos</h2>"
           ServerIP=request.host.split(':')[0]
+
+          html=html+'<h3>'+Keep watching+'</h3>' 
+          html=html+'<h3>'+Recommended+'</h3>' 
           
           response = requests.get(url)
           print (response)
@@ -64,7 +67,8 @@ def cat_page():
           for category_index in categories:
                for category in category_index:
                     if (category=="category"):
-                         html=html+'<h2>'+category_index["category"]+'</h2>'    
+                         html=html+'<h3>'+category_index["category"]+'</h3>'    
+                         html=html+'<div>'  
                          for index in jResp:
                               print ("----------------")
                               for key in index:
@@ -80,12 +84,12 @@ def cat_page():
                                                   uuid=index[key][key2]
                                              if (key2=="category"):
                                                   if (index[key][key2]==category_index["category"]):
-                                                       html=html+'<h3>'+name+'</h3>'
+                                                       html=html+'<h4>'+name+'</h4>'
                                                        html=html+'<a href="http://'+ServerIP+':8080/Video/'+uuid+'">'
                                                        html=html+'<img src="http://34.147.236.169/pics/'+thumb+'">'
                                                        html=html+"</a>"        
                                                        print("=======================")
-     
+                         html=html+'<div>' 
           return html
      else:
           return redirect("http://35.246.112.189:8080")
