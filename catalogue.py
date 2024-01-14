@@ -57,6 +57,11 @@ def cat_page():
                print("Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message']))
                return "Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message'])
           jResp = response.json()
+          
+          categories = requests.get(url).json()
+          for category_index in categories:
+               html=html+'<h2>'+category_index["category"]+'</h2>'
+          
           print (type(jResp))
           html="<h2> Your Videos</h2>"
           name=None
