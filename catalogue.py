@@ -49,6 +49,7 @@ def video_page(video):
 @app.route('/')
 def cat_page():
      username = request.args.get('username')
+     print(username)
      if username is not None:
           url = "http://34.142.25.93/myflix/videos"
           headers = {}
