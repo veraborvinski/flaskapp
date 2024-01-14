@@ -61,7 +61,9 @@ def cat_page():
           
           categories = requests.get(url).json()
           for category_index in categories:
-               html=html+'<h2>'+category_index["category"]+'</h2>'
+               for key in category_index:
+                    if (key=="category"):
+                         html=html+'<h2>'+category_index[key]+'</h2>'
           
           print (type(jResp))
           
