@@ -49,7 +49,7 @@ def cat_page():
           url = "http://34.142.25.93/myflix/videos"
           headers = {}
           payload = json.dumps({ })
-          html="<h2>Your Videos -server 1</h2>"
+          html="<h2>Your Videos</h2>"
           ServerIP=request.host.split(':')[0]
           
           response = requests.get(url)
@@ -79,7 +79,7 @@ def cat_page():
                                              if (key2=="uuid"):
                                                   uuid=index[key][key2]
                                              if (key2=="category"):
-                                                  if (index[key][key2]==category):
+                                                  if (index[key][key2]==category_index["category"]):
                                                        html=html+'<h3>'+name+'</h3>'
                                                        html=html+'<a href="http://'+ServerIP+':8080/Video/'+uuid+'">'
                                                        html=html+'<img src="http://34.147.236.169/pics/'+thumb+'">'
