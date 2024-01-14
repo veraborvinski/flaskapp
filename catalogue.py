@@ -63,6 +63,9 @@ def cat_page():
           jResp = response.json()
           print (type(jResp))
           html="<h2> Your Videos</h2>"
+          name=None
+          thumb=None
+          uuid=None
           for index in jResp:
                print ("----------------")
                for key in index:
