@@ -65,30 +65,30 @@ def cat_page():
                for category in category_index:
                     if (category=="category"):
                          html=html+'<h2>'+category_index["category"]+'</h2>'         
-                              name=None
-                              thumb=None
-                              uuid=None
-                              for index in jResp:
-                                   print ("----------------")
-                                   for key in index:
-                                        if (key !="_id"):
-                                             print (index[key])
-                                             for key2 in index[key]:
-                                                  print (key2,index[key][key2])
-                                                  if (key2=="Name"):
-                                                       name=index[key][key2]
-                                                  if (key2=="thumb"):
-                                                       thumb=index[key][key2]
-                                                  if (key2=="uuid"):
-                                                       uuid=index[key][key2]
-                                                  if (key2=="category"):
-                                                       if (index[key][key2]==category)
-                                                            if name is not None:
-                                                                 html=html+'<h3>'+name+'</h3>'
-                                                                 html=html+'<a href="http://'+ServerIP+':8080/Video/'+uuid+'">'
-                                                                 html=html+'<img src="http://34.147.236.169/pics/'+thumb+'">'
-                                                                 html=html+"</a>"        
-                                                            print("=======================")
+                         name=None
+                         thumb=None
+                         uuid=None
+                         for index in jResp:
+                              print ("----------------")
+                              for key in index:
+                                   if (key !="_id"):
+                                        print (index[key])
+                                        for key2 in index[key]:
+                                             print (key2,index[key][key2])
+                                             if (key2=="Name"):
+                                                  name=index[key][key2]
+                                             if (key2=="thumb"):
+                                                  thumb=index[key][key2]
+                                             if (key2=="uuid"):
+                                                  uuid=index[key][key2]
+                                             if (key2=="category"):
+                                                  if (index[key][key2]==category)
+                                                       if name is not None:
+                                                            html=html+'<h3>'+name+'</h3>'
+                                                            html=html+'<a href="http://'+ServerIP+':8080/Video/'+uuid+'">'
+                                                            html=html+'<img src="http://34.147.236.169/pics/'+thumb+'">'
+                                                            html=html+"</a>"        
+                                                       print("=======================")
      
           return html
      else:
