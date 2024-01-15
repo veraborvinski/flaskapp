@@ -89,10 +89,10 @@ def cat_page():
                                              if (key2=="category"):
                                                   if (index[key][key2]==category_index["category"]):
                                                        html=html+'<th style="width:25%">'
-                                                       html=html+'<h4>'+name+'</h4>'
                                                        html=html+'<a href="http://'+ServerIP+'/Video/'+uuid+'">'
                                                        html=html+'<img width="300" height="200" src="http://34.147.236.169/pics/'+thumb+'">'
                                                        html=html+"</a>"  
+                                                       html=html+'<h4>'+name+'</h4>'
                                                        html=html+'</th>' 
                                                        count = count+1
                          for i in range(count,4):
