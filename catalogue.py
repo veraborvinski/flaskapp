@@ -94,7 +94,7 @@ def cat_page():
                                                        html=html+'<img width="300" height="200" src="http://34.147.236.169/pics/'+thumb+'">'
                                                        html=html+"</a>"  
                                                        html=html+'</th>' 
-                                                       count++
+                                                       count = count+1
                          for i in 4-count:
                               html=html+'<th style="width:25%"></th>'
                          html=html+'</tr>' 
