@@ -95,7 +95,7 @@ def cat_page():
                                                        html=html+"</a>"  
                                                        html=html+'</th>' 
                                                        count = count+1
-                         for i in 4-count:
+                         for i in range(count,4):
                               html=html+'<th style="width:25%"></th>'
                          html=html+'</tr>' 
                          html=html+'</table>' 
