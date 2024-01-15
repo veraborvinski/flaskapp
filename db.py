@@ -63,7 +63,7 @@ def insert_title(cnx,cursor,title,DB_NAME):
 def get_watchlist(cnx,cursor,DB_NAME):
     watch_list = []
     item_statement = "SELECT * FROM "+DB_NAME+".WatchList;"
-    cursor.execute(user_statement)
+    cursor.execute(item_statement)
     
     if cursor.rowcount:
         result_set = cursor.fetchall()
@@ -77,7 +77,7 @@ def get_watchlist(cnx,cursor,DB_NAME):
 def check_if_item_on_watchlist(cnx,cursor,title,DB_NAME):
     item_exists = False
     item_statement = "SELECT * FROM "+DB_NAME+".WatchList WHERE title LIKE '"+title+"';"
-    cursor.execute(user_statement)
+    cursor.execute(item_statement)
     
     if cursor.rowcount:
         item_exists = True
@@ -88,7 +88,7 @@ def check_if_item_on_watchlist(cnx,cursor,title,DB_NAME):
 def get_watchtime(cnx,cursor,title,DB_NAME):
     watchtime = ""
     item_statement = "SELECT * FROM "+DB_NAME+".WatchList WHERE title LIKE '"+title+"';"
-    cursor.execute(user_statement)
+    cursor.execute(item_statement)
     
     if cursor.rowcount:
         result_set = cursor.fetchall()
