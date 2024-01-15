@@ -57,6 +57,8 @@ def video_page(video):
 def cat_page():
      username = request.args.get('username')
      if username is not None:
+          cnx = mysql.connector.connect(user='remoteAccess', password='1234abcz',host='35.189.78.49', port=3306)
+          cursor = cnx.cursor()
           create_database(cnx,cursor,username)
           url = "http://34.142.25.93/myflix/videos"
           headers = {}
