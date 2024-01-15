@@ -49,12 +49,12 @@ def create_database(cnx,cursor,DB_NAME):
     cursor.close()
     cnx.close()
 
-def insert_watchtime(cnx,cursor,title,watchtime,DB_NAME):
+def insert_title(cnx,cursor,title,watchtime,DB_NAME):
     update_statement = ""
     if check_if_item_on_watchlist(cnx,cursor,title,DB_NAME):
-        update_statement = "UPDATE "+DB_NAME+"+.WatchList SET watchtime='"+watchtime+"' WHERE title LIKE %'"title"'%;"
+        update_statement = "UPDATE "+DB_NAME+"+.WatchList SET watchtime='0:00' WHERE title LIKE %'"title"'%;"
     else:
-        update_statement = "INSERT INTO "+DB_NAME+"+.WatchList (title,watchtime) VALUES ('"+title+"', '"+watchtime+"');"
+        update_statement = "INSERT INTO "+DB_NAME+"+.WatchList (title,watchtime) VALUES ('"+title+"', '0:00');"
     cursor.execute(update_statement)
     cnx.commit()
     cursor.close()
