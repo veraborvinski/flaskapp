@@ -70,7 +70,7 @@ def cat_page():
                for category in category_index:
                     if (category=="category"):
                          html=html+'<h3>'+category_index["category"]+'</h3>'    
-                         html=html+'<table style="width:100%">' 
+                         html=html+'<table style="width:100%" bgcolor="#d3d3d3">' 
                          html=html+'<tr>' 
                          for index in jResp:
                               print ("----------------")
@@ -90,7 +90,7 @@ def cat_page():
                                                        html=html+'<td>'
                                                        html=html+'<h4>'+name+'</h4>'
                                                        html=html+'<a href="http://'+ServerIP+':8080/Video/'+uuid+'">'
-                                                       html=html+'<img width="300" src="http://34.147.236.169/pics/'+thumb+'">'
+                                                       html=html+'<img width="300" height="200" src="http://34.147.236.169/pics/'+thumb+'">'
                                                        html=html+"</a>"  
                                                        html=html+'</td>'                                                      
                          html=html+'</tr>' 
