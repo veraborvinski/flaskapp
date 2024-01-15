@@ -16,7 +16,6 @@ bootstrap = Bootstrap5(app)
 app.debug = True
 cnx = mysql.connector.connect(user='remoteAccess', password='1234abcz',host='35.189.78.49', port=3306)
 cursor = cnx.cursor()
-create_database(cnx,cursor)
 username=None
 
 @app.route('/Video/<video>')
@@ -56,6 +55,7 @@ def video_page(video):
 def cat_page():
      username = request.args.get('username')
      if username is not None:
+          create_database(cnx,cursor,username)
           url = "http://34.142.25.93/myflix/videos"
           headers = {}
           payload = json.dumps({ })
