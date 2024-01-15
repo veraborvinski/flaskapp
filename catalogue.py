@@ -45,9 +45,9 @@ def video_page(video):
                          videofile=index[key][key2]
                     if (key2=="pic"):
                          pic=index[key][key2]
-     cnx = mysql.connector.connect(user='remoteAccess', password='1234abcz',host='35.189.78.49', port=3306)
-     cursor = cnx.cursor(buffered=True)
      if 'username' in session:
+          cnx = mysql.connector.connect(user='remoteAccess', password='1234abcz',host='35.189.78.49', port=3306)
+          cursor = cnx.cursor(buffered=True)
           insert_title(cnx,cursor,video,session['username'])
      return render_template('video.html', name=video,file=videofile,pic=pic)
 
