@@ -77,6 +77,7 @@ def cat_page():
           cnx = mysql.connector.connect(user='remoteAccess', password='1234abcz',host='35.189.78.49', port=3306)
           cursor = cnx.cursor(buffered=True)
           watchlist = get_watchlist(cnx,cursor,username)
+          print(watchlist)
           titlecount=0
           html=html+'<h3>Keep Watching</h3>'    
           html=html+'<table style="width:100%" bgcolor="#d3d3d3">' 
