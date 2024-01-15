@@ -17,6 +17,7 @@ app.debug = True
 cnx = mysql.connector.connect(user='remoteAccess', password='1234abcz',host='35.189.78.49', port=3306)
 cursor = cnx.cursor()
 create_database(cnx,cursor)
+username=None
 
 @app.route('/Video/<video>')
 def video_page(video):
@@ -48,6 +49,7 @@ def video_page(video):
                          videofile=index[key][key2]
                     if (key2=="pic"):
                          pic=index[key][key2]
+     insert_watchtime(cnx,cursor,video,username)
      return render_template('video.html', name=video,file=videofile,pic=pic)
 
 @app.route('/')
