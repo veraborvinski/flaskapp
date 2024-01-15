@@ -49,6 +49,8 @@ def video_page(video):
           cnx = mysql.connector.connect(user='remoteAccess', password='1234abcz',host='35.189.78.49', port=3306)
           cursr = cnx.cursor(buffered=True)
           insert_title(cnx,cursr,video,session['username'])
+          cursor.close()
+          cnx.close()
      return render_template('video.html', name=video,file=videofile,pic=pic)
 
 @app.route('/')
