@@ -69,7 +69,7 @@ def get_watchlist(cnx,cursor,DB_NAME):
     if cursor.rowcount:
         result_set = cursor.fetchall()
         for row in result_set:
-            watchlist.append("%s" % (row["title"]))
+            watchlist.append(row["title"])
             
     cursor.close()
     cnx.close()
