@@ -73,7 +73,6 @@ def cat_page():
                return "Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message'])
           jResp = response.json()
 
-          html=html+'<h3>Keep watching</h3>' 
           cnx = mysql.connector.connect(user='remoteAccess', password='1234abcz',host='35.189.78.49', port=3306)
           cursor = cnx.cursor(buffered=True)
           watchlist = get_watchlist(cnx,cursor,username)
