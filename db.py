@@ -5,7 +5,7 @@ TABLES = {}
 
 def create_database(cnx,cursor,DB_NAME):
     TABLES['key'] = (
-    "CREATE TABLE if not exists "+DB_NAME".WatchList ("
+    "CREATE TABLE if not exists "+DB_NAME+".WatchList ("
     "  ID int(11) NOT NULL AUTO_INCREMENT,"
     "  title varchar(60) NOT NULL,"
     "  watchtime varchar(8) NOT NULL,"
