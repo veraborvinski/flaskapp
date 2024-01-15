@@ -47,7 +47,7 @@ def video_page(video):
                     if (key2=="pic"):
                          pic=index[key][key2]
      cnx = mysql.connector.connect(user='remoteAccess', password='1234abcz',host='35.189.78.49', port=3306)
-     cursor = cnx.cursor()
+     cursor = cnx.cursor(buffered=True)
      insert_watchtime(cnx,cursor,video,username)
      return render_template('video.html', name=video,file=videofile,pic=pic)
 
@@ -74,7 +74,7 @@ def cat_page():
 
           html=html+'<h3>Keep watching</h3>' 
           cnx = mysql.connector.connect(user='remoteAccess', password='1234abcz',host='35.189.78.49', port=3306)
-          cursor = cnx.cursor()
+          cursor = cnx.cursor(buffered=True)
           watchlist = get_watchlist(cnx,cursor,username)
           html=html+'<table style="width:100%" bgcolor="#d3d3d3">' 
           html=html+'<tr>'
