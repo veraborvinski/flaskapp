@@ -60,7 +60,7 @@ def insert_title(cnx,cursor,title,DB_NAME):
     cursor.close()
     cnx.close()
 
-def get_watchlist(cnx,cursor,title,DB_NAME):
+def get_watchlist(cnx,cursor,DB_NAME):
     watch_list = []
     item_statement = "SELECT * FROM "+DB_NAME+".WatchList;"
     cursor.execute(user_statement)
