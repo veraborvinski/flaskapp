@@ -1,18 +1,17 @@
 import mysql.connector
 from mysql.connector import errorcode
 
-DB_NAME = 'AccessKeys'
-
 TABLES = {}
-TABLES['key'] = (
-    "CREATE TABLE if not exists AccessKeys.AccessKey ("
+
+def create_database(cnx,cursor,DB_NAME):
+    TABLES['key'] = (
+    "CREATE TABLE if not exists "+DB_NAME".WatchList ("
     "  ID int(11) NOT NULL AUTO_INCREMENT,"
-    "  username varchar(60) NOT NULL,"
-    "  keynum varchar(64) NOT NULL,"
+    "  title varchar(60) NOT NULL,"
+    "  watchtime varchar(8) NOT NULL,"
     "  PRIMARY KEY (ID)"
     ") ENGINE=InnoDB")
-
-def create_database(cnx,cursor):
+    
     print ("Trying database creation")
     try:
         cursor.execute(
@@ -50,12 +49,37 @@ def create_database(cnx,cursor):
     cursor.close()
     cnx.close()
 
-def insert_user(cnx,cursor,username,key):
-    add_user = ("INSERT INTO AccessKeys.AccessKey "
-               "(username,keynum) "
-               "VALUES (%s, %s)")
-    data_user=(username,key)
-    cursor.execute(add_user,data_user)
+def insert_watchtime(cnx,cursor,title,watchtime,DB_NAME):
+    update_statement = ""
+    if check_if_item_on_watchlist(cnx,cursor,title,DB_NAME):
+        update_statement = "UPDATE "+DB_NAME+"+.WatchList SET watchtime='"+watchtime+"' WHERE title LIKE %'"title"'%;"
+    else:
+        update_statement = "INSERT INTO "+DB_NAME+"+.WatchList (title,watchtime) VALUES ('"+title+"', '"+watchtime+"');"
+    cursor.execute(update_statement)
     cnx.commit()
     cursor.close()
     cnx.close()
+
+def check_if_item_on_watchlist(cnx,cursor,title,DB_NAME):
+    item_exists = False
+    item_statement = "SELECT * FROM "+DB_NAME+".AccessKey WHERE title LIKE '"+title+"';"
+    cursor.execute(user_statement)
+    
+    if cursor.rowcount:
+        item_exists = True
+    cursor.close()
+    cnx.close()
+    return item_exists
+
+def get_watchtime(cnx,cursor,title,DB_NAME):
+    watchtime = ""
+    item_statement = "SELECT * FROM "+DB_NAME+".AccessKey WHERE title LIKE '"+title+"';"
+    cursor.execute(user_statement)
+    
+    if cursor.rowcount:
+        result_set = cursor.fetchall()
+        for row in result_set:
+            watchtime = "%s" % (row["watchtime"])
+    cursor.close()
+    cnx.close()
+    return watchtime
