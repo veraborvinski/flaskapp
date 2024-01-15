@@ -148,4 +148,5 @@ def cat_page():
           return redirect("http://35.246.112.189:8080")
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port="8080")
+     app.secret_key = 'super secret key'
+     app.run(host='0.0.0.0',port="8080")
