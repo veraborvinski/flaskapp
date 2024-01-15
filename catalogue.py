@@ -61,9 +61,6 @@ def cat_page():
           payload = json.dumps({ })
           html="<h2>Your Videos</h2>"
           ServerIP=request.host.split(':')[0]
-
-          html=html+'<h3>Keep watching</h3>' 
-          html=html+'<h3>Recommended</h3>' 
           
           response = requests.get(url)
           print (response)
@@ -72,6 +69,40 @@ def cat_page():
                print("Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message']))
                return "Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message'])
           jResp = response.json()
+
+          html=html+'<h3>Keep watching</h3>' 
+          watchlist = get_watchlist(cnx,cursor,username)
+          html=html+'<table style="width:100%" bgcolor="#d3d3d3">' 
+          html=html+'<tr>'
+          for index in jResp:
+               print ("----------------")
+               for key in index:
+                    if (key !="_id"):
+                         print (index[key])
+                         for key2 in index[key]:
+                              name=None
+                              thumb=None
+                              uuid=None
+                              print (key2,index[key][key2])
+                              if (key2=="Name"):
+                                   name=index[key][key2]
+                              if (key2=="thumb"):
+                                   thumb=index[key][key2]
+                              if (key2=="uuid"):
+                                   uuid=index[key][key2]
+                              if name is not None:
+                                   if name in watchlist:
+                                        html=html+'<th style="width:25%">'
+                                        html=html+'<a href="http://'+ServerIP+'/Video/'+uuid+'">'
+                                        html=html+'<img width="300" height="200" src="http://34.147.236.169/pics/'+thumb+'">'
+                                        html=html+"</a>"  
+                                        html=html+'<h4>'+name+'</h4>'
+                                        html=html+'</th>' 
+                                        count = count+1
+          html=html+'</tr>' 
+          html=html+'</table>'
+          
+          html=html+'<h3>Recommended</h3>' 
           
           categories = requests.get("http://34.142.25.93/myflix/categories").json()
           for category_index in categories:
