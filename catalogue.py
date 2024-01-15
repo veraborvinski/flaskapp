@@ -8,11 +8,9 @@ import json
 import requests
 # First we set our credentials
 
-from flask_bootstrap import Bootstrap5
 from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash
 app = Flask(__name__)
-bootstrap = Bootstrap5(app)
 app.debug = True
 
 @app.route('/Video/<video>')
