@@ -57,6 +57,8 @@ def insert_title(cnx,cursor,title,DB_NAME):
         update_statement = "INSERT INTO "+DB_NAME+"+.WatchList (title,watchtime) VALUES ('"+title+"', '0:00');"
     cursor.execute(update_statement)
     cnx.commit()
+    cursor.close()
+    cnx.close()
 
 def get_watchlist(cnx,cursor,DB_NAME):
     watchlist = []
@@ -79,8 +81,6 @@ def check_if_item_on_watchlist(cnx,cursor,title,DB_NAME):
     
     if cursor.rowcount:
         item_exists = True
-    cursor.close()
-    cnx.close()
     return item_exists
 
 def get_watchtime(cnx,cursor,title,DB_NAME):
