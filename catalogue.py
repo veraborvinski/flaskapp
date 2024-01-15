@@ -86,10 +86,12 @@ def cat_page():
                                                   uuid=index[key][key2]
                                              if (key2=="category"):
                                                   if (index[key][key2]==category_index["category"]):
-                                                       html=html+'<h4 width="300">'+name+'</h4>'
+                                                       html=html+'<canvas width="300">' 
+                                                       html=html+'<h4>'+name+'</h4>'
                                                        html=html+'<a href="http://'+ServerIP+':8080/Video/'+uuid+'">'
-                                                       html=html+'<img src="http://34.147.236.169/pics/'+thumb+'">'
-                                                       html=html+"</a>"        
+                                                       html=html+'<img width="300" src="http://34.147.236.169/pics/'+thumb+'">'
+                                                       html=html+"</a>"    
+                                                       html=html+'<canvas>'
                                                        print("=======================")
                          html=html+'<div>' 
           return html
