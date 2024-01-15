@@ -55,6 +55,7 @@ def insert_title(cnx,cursor,title,DB_NAME):
         update_statement = "UPDATE "+DB_NAME+"+.WatchList SET watchtime='0:00' WHERE title LIKE %'"+title+"'%;"
     else:
         update_statement = "INSERT INTO "+DB_NAME+"+.WatchList (title,watchtime) VALUES ('"+title+"', '0:00');"
+    print(update_statement)
     cursor.execute(update_statement)
     cnx.commit()
     cursor.close()
