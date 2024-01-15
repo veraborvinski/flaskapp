@@ -46,7 +46,7 @@ def video_page(video):
                     if (key2=="pic"):
                          pic=index[key][key2]
      if 'username' in session:
-          cnx = mysql.connector.connect(user='remoteAccess', password='1234abcz',host='35.189.78.49', port=3306)
+          cnx = mysql.connector.connect(user='remoteAccess', password='1234abcz',host='34.142.123.1', port=3306)
           cursr = cnx.cursor(buffered=True)
           insert_title(cnx,cursr,video,session['username'])
      return render_template('video.html', name=video,file=videofile,pic=pic)
@@ -56,7 +56,7 @@ def cat_page():
      username = request.args.get('username')
      if username is not None:
           session['username'] = username
-          cnx = mysql.connector.connect(user='remoteAccess', password='1234abcz',host='35.189.78.49', port=3306)
+          cnx = mysql.connector.connect(user='remoteAccess', password='1234abcz',host='34.142.123.1', port=3306)
           cursor = cnx.cursor()
           create_database(cnx,cursor,username)
           url = "http://34.142.25.93/myflix/videos"
@@ -73,7 +73,7 @@ def cat_page():
                return "Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message'])
           jResp = response.json()
 
-          cnx = mysql.connector.connect(user='remoteAccess', password='1234abcz',host='35.189.78.49', port=3306)
+          cnx = mysql.connector.connect(user='remoteAccess', password='1234abcz',host='34.142.123.1', port=3306)
           cursor = cnx.cursor(buffered=True)
           watchlist = get_watchlist(cnx,cursor,username)
           print(watchlist)
