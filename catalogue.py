@@ -153,8 +153,8 @@ def cat_page():
                          html=html+'</table>' 
           return html
      else:
-          return redirect("http://35.246.112.189:8080")
+          return redirect("http://35.246.112.189")
 
 if __name__ == '__main__':
      app.secret_key = 'super secret key'
-     app.run(host='0.0.0.0',port="8080")
+     app.run(host='0.0.0.0',port="5000")
