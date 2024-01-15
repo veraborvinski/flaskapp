@@ -14,8 +14,6 @@ from flask import Flask, request, session, g, redirect, url_for, abort, \
 app = Flask(__name__)
 bootstrap = Bootstrap5(app)
 app.debug = True
-cnx = mysql.connector.connect(user='remoteAccess', password='1234abcz',host='35.189.78.49', port=3306)
-cursor = cnx.cursor()
 username=None
 
 @app.route('/Video/<video>')
