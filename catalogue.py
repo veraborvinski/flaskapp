@@ -78,7 +78,7 @@ def cat_page():
           cursor = cnx.cursor(buffered=True)
           watchlist = get_watchlist(cnx,cursor,username)
           titlecount=0
-          html=html+'<h3>'+category_index["category"]+'</h3>'    
+          html=html+'<h3>Keep Watching</h3>'    
           html=html+'<table style="width:100%" bgcolor="#d3d3d3">' 
           html=html+'<tr>' 
           for title in watchlist:
